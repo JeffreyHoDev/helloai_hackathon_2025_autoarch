@@ -1,0 +1,30 @@
+# Use an official Python runtime as a parent image
+FROM python:3.11-slim
+
+# Set the working directory in the container to /app
+WORKDIR /app
+
+# Upgrade pip
+RUN pip install --upgrade pip
+
+# Create a non-root user and group
+RUN addgroup --system app && adduser --system --group app
+
+# Install any needed packages specified in requirements.txt
+# Copy requirements first to leverage Docker layer caching
+COPY --chown=app:app requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install google-adk[a2a]
+
+# Copy the rest of the application code
+COPY --chown=app:app ./cloud_arch_proposal_agent ./cloud_arch_proposal_agent
+
+# Switch to the non-root user
+USER app
+
+# Make port 8080 available to the world outside this container
+EXPOSE 8080
+
+# ENTRYPOINT ["uv", "run", ".", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["uvicorn", "cloud_arch_proposal_agent.agent:a2a_app", "--host", "0.0.0.0", "--port", "8080"]
+
