@@ -1,0 +1,10 @@
+google-adk[a2a]
+python-dotenv
+uvicorn
+uv
+python-docx
+pandas
+openpyxl
+reportlab
+pdf2docx
+docx2pdf
