@@ -94,7 +94,7 @@ def to_a2a(
   )
 
   # Build agent card
-  rpc_url = "https://cloud-cost-analysis-agent-service-945869404169.us-central1.run.app"
+  rpc_url = "https://for-custom-ui-cloud-cost-analysis-agent-945869404169.us-central1.run.app"
 
   capabilities = AgentCapabilities(streaming=True)
   skill = AgentSkill(

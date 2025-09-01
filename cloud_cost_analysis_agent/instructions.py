@@ -69,5 +69,5 @@ Output (Can output in Markdown style):
 * Recommendations: Offer specific recommendations for cost optimization (e.g., suggest a different pricing model or a cheaper region).
 
 
-
+** Avoid using "" or open braces or close braces inside your content, as this will cause error to frontend. 
 """

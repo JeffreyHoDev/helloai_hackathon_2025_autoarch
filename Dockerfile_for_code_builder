@@ -17,7 +17,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install google-adk[a2a]
 
 # Copy the rest of the application code
-COPY --chown=app:app ./cloud_arch_proposal_agent ./cloud_arch_proposal_agent
+COPY --chown=app:app ./diagrams_code_builder_agent ./diagrams_code_builder_agent
 
 # Switch to the non-root user
 USER app
@@ -26,5 +26,5 @@ USER app
 EXPOSE 8080
 
 # ENTRYPOINT ["uv", "run", ".", "--host", "0.0.0.0", "--port", "8080"]
-CMD ["uvicorn", "cloud_arch_proposal_agent.agent:a2a_app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["uvicorn", "diagrams_code_builder_agent.agent:a2a_app", "--host", "0.0.0.0", "--port", "8080"]
 
